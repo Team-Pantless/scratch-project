@@ -1,0 +1,14 @@
+
+  {
+    "birds": [
+      {
+      "imageUrl":
+      "https://www.dec.ny.gov/images/administration_images/wwbluebirdleft.jpg",
+      "name": "Eastern Bluebird",
+      "color": "blue",
+      "size": "small",
+      "fact": "Named New York's state bird in 1970."
+      }
+    ]
+  }
+
