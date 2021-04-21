@@ -18,6 +18,23 @@
   text-align: center;
 }
 
-.birdColorForm {
+.birdColorQuestion {
   text-align: center;
+}
+
+.button-div {
+  width: 100vw;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+.blue-button {
+  background-color: blue;
+  /* text-align: center; */
+  margin: 1vh;
+}
+
+.red-button {
+  background-color: crimson;
+  margin: 1vh;
 }
