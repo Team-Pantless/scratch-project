@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
+// import birdfunc from '../birdFunc';
 // import Birds from '../Components/birdData';
 
 
@@ -20,18 +22,22 @@ class App extends Component {
 
   handleSubmit(event) {
     //this should render the birds in the database that are blue;
-    if (this.state.value === "null") {
+    if (this.state.value === 'null' || this.state.value === '') {
       alert('Please pick a color!')
     }
     else {
-      alert('A bird color was submitted: ' + this.state.value);
       event.preventDefault();
+      console.log('A bird color was submitted: ' + this.state.value);
+      // birdFunc();
     }
   }
+  
+   
 
   render() {
     return (
-      < div >
+
+      < div className="container">
         <div className="title">
           <h1>Talk Birdy to Me!</h1>
           </div>
@@ -51,7 +57,11 @@ class App extends Component {
           </form>
           </div>
         </div >
+
     );
   }
 }
 export default App;
+
+
+{/* <i class="fas fa-feather-alt"></i> */}

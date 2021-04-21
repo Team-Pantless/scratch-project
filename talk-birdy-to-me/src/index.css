@@ -3,9 +3,21 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: teal;
 }
 
-title {
-  color: blue;
+.container {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(180deg, #ffd17a, #fff0f5);
+}
+
+.title {
+  color: #cb410b;
+  padding: 2vh;
+  text-align: center;
+}
+
+.birdColorForm {
+  text-align: center;
 }
