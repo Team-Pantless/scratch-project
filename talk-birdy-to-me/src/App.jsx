@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import birdCard from './birdCard.jsx';
 import data from '../data/birdDB.json';
+import homePage from './home-page.jsx'
 // import createPalette from '@material-ui/core/styles/createPalette';
 // import birdfunc from './birdFunc.jsx';
 // import Birds from '../Components/birdData';
@@ -38,16 +39,8 @@ function App()  {
   
   if (color === 'no color yet') {
     return (
-      <div className="container">
-        <div className="title">
-          <h1>Talk Birdy to Me!</h1>
-        </div>
-        <div className="birdColorQuestion">What color is the bird?</div>
-        <div className="button-div">
-          <button className='blue-button' onClick={() => { handleChange('Blue') }} >Blue Button</button>
-          <button className='red-button' onClick={() => { handleChange('Red') }}>Red Button</button>
-        </div>
-      </div >
+      homePage()
+  
     );
   }
   else {
