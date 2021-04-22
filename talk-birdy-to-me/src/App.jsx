@@ -45,16 +45,17 @@ function App()  {
     //use filter to get the objects we want
     const birdList = db.filter(el => el.color === color);
     return (
-      <div>   <div className="title">{color.toUpperCase()} BIRDS </div>
+      <div className="container">   <div className="title"><h1>{color} birds </h1></div>
         <div>
           {birdList.map((el, i) => (
         <article className="birdPage" key={`birdCard${i}`}>
         <div className="birdCard">
-          <figure className="birdImg">
+                <div className="box">
+                  <figure className="birdImg">
             <img src={el.imageUrl}></img>
             </figure>
 
-          <div className="box">
+          
             <ul className="ul">
               <li>Name: {el.name}</li>
               <li>Color: {el.color}</li>
