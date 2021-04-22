@@ -1,40 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
-import createPalette from '@material-ui/core/styles/createPalette';
-// import birdfunc from '../birdFunc';
+import birdCard from './birdCard.jsx'
+// import createPalette from '@material-ui/core/styles/createPalette';
+// import birdfunc from './birdFunc.jsx';
 // import Birds from '../Components/birdData';
+
+const db = JSON.parse(`{
+      "imageUrl":
+      "https://www.dec.ny.gov/images/administration_images/wwbluebirdleft.jpg",
+      "name": "Eastern Bluebird",
+      "color": "blue",
+      "size": "small",
+      "fact": "Named New York's state bird in 1970."
+      }`
+)
 
 
 function App()  {
-  const [color, setColor] = useState('no color yet')
+  const [color, setColor] = useState('no color yet');
 
   useEffect(() => {
     // alert('this happened')
-    console.log('rendered', color)
+    console.log('rendered', color);
     
     //add in conditions to check if setColor is udpated and render accordingly
     if (color !== 'no color yet') {
-      console.log(`inside ${color} conditional`)
+      // console.log(`inside ${color} conditional`);
+      return birdCard(color);
     }
-
-    // if (color === 'red') {
-    //   console.log('inside red conditional');
-    // }
-    // if (color === 'blue') {
-    //   console.log('inside blue conditional')
-    // }
-
   })
-    
+
   const handleChange = value => {
     setColor(value);
   }
 
-  
+  const birdCard = color => {
+    console.log(`inside bird card`)
+    }
 
+//   const birdFunc = props => {
+//     <h2>{ props.value }</h2>
+// }
+  
+  if (color === 'no color yet') {
     return (
+
       < div className="container">
         <div className="title">
           <h1>Talk Birdy to Me!</h1>
@@ -44,9 +54,15 @@ function App()  {
           <button className='blue-button' onClick={() => { handleChange('blue') }} >Blue Button</button>
           <button className='red-button' onClick={() => { handleChange('red') }}>Red Button</button>
         </div>
-        </div >
+      </div >
 
     );
+  }
+  if (color === 'blue') {
+    return (
+      <div>Blue Div</div>
+    )
+  }
 }
 
 // const handleChange = event => {
