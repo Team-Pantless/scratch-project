@@ -7,7 +7,6 @@ import data from '../data/birdDB.json';
 // import Birds from '../Components/birdData';
 
 const db = data.birds;
-console.log(db)
 
 function App()  {
   const [color, setColor] = useState('no color yet');
@@ -28,8 +27,10 @@ function App()  {
   }
 
   const birdCard = color => {
-    console.log(`inside bird card`)
-    }
+    console.log(`inside bird card`);
+  }
+
+
 
 //   const birdFunc = props => {
 //     <h2>{ props.value }</h2>
@@ -37,26 +38,26 @@ function App()  {
   
   if (color === 'no color yet') {
     return (
-      < div className="container">
+      <div className="container">
         <div className="title">
           <h1>Talk Birdy to Me!</h1>
         </div>
         <div className="birdColorQuestion">What color is the bird?</div>
         <div className="button-div">
-          <button className='blue-button' onClick={() => { handleChange('blue') }} >Blue Button</button>
-          <button className='red-button' onClick={() => { handleChange('red') }}>Red Button</button>
+          <button className='blue-button' onClick={() => { handleChange('Blue') }} >Blue Button</button>
+          <button className='red-button' onClick={() => { handleChange('Red') }}>Red Button</button>
         </div>
       </div >
     );
   }
-  if (color === 'blue') {
+  else {
+      console.log(db[0])
     return (
-      <div className="container">
-        <div className="title">Blue Div</div>
-        <div>
-          <box className="box">{color} {db.size}</box>
-        </div>
-        </div>
+      <article className="birdCard">
+        <div className="title">{color} Div</div>
+        <div className="box">{color} {db[0].size}</div>
+      </article>
+        
     );
   }
 }

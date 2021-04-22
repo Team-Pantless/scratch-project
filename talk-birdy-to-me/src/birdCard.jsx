@@ -18,17 +18,6 @@ import { faStar as regStar } from '@fortawesome/free-regular-svg-icons';
 //   : require(`../assets/${src}`));
 
 
-
-// const blue = {
-//       name: `Eastern Bluebird`,
-//       color: `blue`,
-//       size: `small`,
-//       fact: `Named New York's state bird in 1970.`,
-//     //   photo:
-//     //   `https://www.dec.ny.gov/images/administration_images/wwbluebirdleft.jpg`
-//       }
-
-
 // const birdCard = (color) => {
 //   const {name, color, size, fact} = color;
 
