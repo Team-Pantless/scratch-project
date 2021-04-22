@@ -11,7 +11,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /data/],
         use: {
           loader: 'babel-loader',
           options: {
@@ -21,10 +21,12 @@ module.exports = {
       },
       {
         test: /\.(js)$/,
+        exclude: [/node_modules/, /data/],
         use: 'babel-loader',
       },
       {
         test: /\.css$/,
+        exclude: [/node_modules/, /data/],
         use: ['style-loader', 'css-loader'],
       },
     ],

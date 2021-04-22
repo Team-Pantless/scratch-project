@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
-import birdCard from './birdCard.jsx'
+import birdCard from './birdCard.jsx';
+import data from '../data/birdDB.json';
 // import createPalette from '@material-ui/core/styles/createPalette';
 // import birdfunc from './birdFunc.jsx';
 // import Birds from '../Components/birdData';
 
-const db = JSON.parse(`{
-      "imageUrl":
-      "https://www.dec.ny.gov/images/administration_images/wwbluebirdleft.jpg",
-      "name": "Eastern Bluebird",
-      "color": "blue",
-      "size": "small",
-      "fact": "Named New York's state bird in 1970."
-      }`
-)
-
+const db = data.birds;
+console.log(db)
 
 function App()  {
   const [color, setColor] = useState('no color yet');
@@ -44,7 +37,6 @@ function App()  {
   
   if (color === 'no color yet') {
     return (
-
       < div className="container">
         <div className="title">
           <h1>Talk Birdy to Me!</h1>
@@ -55,13 +47,17 @@ function App()  {
           <button className='red-button' onClick={() => { handleChange('red') }}>Red Button</button>
         </div>
       </div >
-
     );
   }
   if (color === 'blue') {
     return (
-      <div>Blue Div</div>
-    )
+      <div className="container">
+        <div className="title">Blue Div</div>
+        <div>
+          <box className="box">{color} {db.size}</box>
+        </div>
+        </div>
+    );
   }
 }
 
