@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 
-const homePage = () => {
+
+const homePage = (props) => {
     return (
         <div className="container">
         <div className="title">
@@ -9,10 +9,13 @@ const homePage = () => {
         </div>
         <div className="birdColorQuestion">What color is the bird?</div>
         <div className="button-div">
-            <button className='blue-button' onClick={() => { handleChange('Blue') }} >Blue Button</button>
-            <button className='red-button' onClick={() => { handleChange('Red') }}>Red Button</button>
+            <button className='blue-button' onClick={() => { props.handleChange('blue') }} >Blue</button>
+            <button className='brown-button' onClick={() => { props.handleChange('brown') }}>Brown</button>
+            <button className='black-button' onClick={() => { props.handleChange('black') }}>Black</button>
+                <button className='gray-button' onClick={() => { props.handleChange('gray') }}>Gray</button>
+                 <button className='red-button' onClick={() => { props.handleChange('red') }}>Red</button>
         </div>
-        </div >
+        </div>
     )
 }
 

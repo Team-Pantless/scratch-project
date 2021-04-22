@@ -28,21 +28,37 @@
   /* justify-content: center; */
   text-align: center;
 }
+button {
+  margin: 1vh;
+}
 
 .blue-button {
   background-color: blue;
   /* text-align: center; */
-  margin: 1vh;
+  /* margin: 1vh; */
 }
 
-.red-button {
-  background-color: crimson;
-  margin: 1vh;
+.brown-button {
+  background-color: brown;
+  /* margin: 1vh; */
 }
 
 .box {
-  padding: 1vh;
+  /* padding: 1vh; */
+  margin: 2vh;
   border: 2px solid black;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 60vw;
+}
+
+.birdImg {
   text-align: center;
 }
 

@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { render } from 'react-dom';
-import birdCard from './birdCard.jsx';
 import data from '../data/birdDB.json';
-import homePage from './home-page.jsx'
-// import createPalette from '@material-ui/core/styles/createPalette';
-// import birdfunc from './birdFunc.jsx';
-// import Birds from '../Components/birdData';
+import HomePage from './home-page.jsx'
+
 
 const db = data.birds;
 
@@ -13,12 +9,11 @@ function App()  {
   const [color, setColor] = useState('no color yet');
 
   useEffect(() => {
-    // alert('this happened')
+
     console.log('rendered', color);
     
-    //add in conditions to check if setColor is udpated and render accordingly
     if (color !== 'no color yet') {
-      // console.log(`inside ${color} conditional`);
+
       return birdCard(color);
     }
   })
@@ -30,48 +25,53 @@ function App()  {
   const birdCard = color => {
     console.log(`inside bird card`);
   }
-
-
-
-//   const birdFunc = props => {
-//     <h2>{ props.value }</h2>
-// }
   
   if (color === 'no color yet') {
     return (
-      homePage()
-  
+      <HomePage handleChange={ handleChange } />
     );
   }
   else {
-      console.log(db[0])
+    console.log('database: ', db[0].color)
+    console.log('color check', color)
+
+    let birdObj;
+    for (let i = 0; i < db.length; i++) {
+      if (db[i].color === color) {
+        birdObj = Object.values(db[i]);
+      }
+    }
+    
+    //use filter to get the objects we want
+    const birdList = db.filter(el => el.color === color);
     return (
-      <article className="birdCard">
-        <div className="title">{color} Div</div>
-        <div className="box">{color} {db[0].size}</div>
-      </article>
-        
+      <div>   <div className="title">{color.toUpperCase()} BIRDS </div>
+        <div>
+          {birdList.map((el, i) => (
+        <article className="birdPage" key={`birdCard${i}`}>
+        <div className="birdCard">
+          <figure className="birdImg">
+            <img src={el.imageUrl}></img>
+            </figure>
+
+          <div className="box">
+            <ul className="ul">
+              <li>Name: {el.name}</li>
+              <li>Color: {el.color}</li>
+              <li>Size: {el.size}</li>
+              <li>Fun Fact: {el.fact}</li>
+            </ul>
+          </div>
+        </div>
+        </article>
+    
+        ))}</div>
+        <button className='return-button' onClick={() => { handleChange('no color yet') }}>Return home</button>
+
+        </div>
     );
   }
 }
 
-// const handleChange = event => {
-
-//   }
-
-// const handleSubmit = event => {
-//     //this should render the birds in the database that are blue;
-//     if (color === '') {
-//       alert('Please pick a color!')
-//     }
-//     else {
-//       event.preventDefault();
-//       console.log('A bird color was submitted: ' + color);
-//       // birdFunc();
-//     }
-//   }
   
 export default App;
-
-
-{/* <i class="fas fa-feather-alt"></i> */}

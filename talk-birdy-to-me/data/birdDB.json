@@ -5,8 +5,92 @@
       "https://www.dec.ny.gov/images/administration_images/wwbluebirdleft.jpg",
       "name": "Eastern Bluebird",
       "color": "blue",
-      "size": "small",
+      "size": "6.3 – 8.3 inches",
       "fact": "Named New York's state bird in 1970."
+      },
+      {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/amkestrelsm.jpg",
+      "name": "American Kestrel",
+      "color": "brown",
+      "size": "9 inches",
+      "fact": "Is the smallest falcon in North America."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/fsambiph.jpg",
+      "name": "American Bittern",
+      "color": "brown",
+      "size": "23.6 - 33.5 inches",
+      "fact": "Best known for the unique, loud, guttural call made by the male, which has resulted in it being given several nicknames, including ‘water belcher’, ‘thunder pumper’, and ‘mire-drum’."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/amwoodcockhidden.JPG",
+      "name": "American Woodcock",
+      "color": "brown",
+      "size": "10-12 inches in length (including bill), with a wingspan of 17-19 inches",
+      "fact": "It can eat its weight in worms each day."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/adultperched.jpg",
+      "name": "Bald Eagle",
+      "color": "brown",
+      "size": "30 inches tall with a wingspan of 72-84 inches",
+      "fact": "The word bald in the eagle's name comes from a word in Old English that means white headed."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/fsbithph.gif",
+      "name": "Bicknell's Thrush",
+      "color": "brown",
+      "size": "6-7.5 inches",
+      "fact": "The Bicknell's Thrush is among the least-known breeding birds in North America. They were considered a subspecies of the Gray-cheeked Thrush until 1995."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/fsblraph.jpg",
+      "name": "Black Rail",
+      "color": "brown",
+      "size": "4-5.9 inches with a wingspan 8.6-11 inches",
+      "fact": "Their breeding season call is a three-noted \"kickee-doo\" or \"kic-kic-ker.\""
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/blsk.jpg",
+      "name": "Black Skimmer",
+      "color": "black",
+      "size": "15.5-19.5 inches in length with a wingspan of approximately 14-15 inches",
+      "fact": "There are three species of skimmer in the world; the Black Skimmer is the only skimmer found in the Americas."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/fsblteph.jpg",
+      "name": "Black Tern",
+      "color": "gray",
+      "size": "10 inches in length",
+      "fact": "A group of terns are collectively known as a \"ternery\" or a \"U\" of terns."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/bobogordonellmers.jpg",
+      "name": "Bobolink",
+      "color": "black",
+      "size": "6-8 inches in length",
+      "fact": "The Bobolink is one of the world's most impressive songbird migrants, traveling some 12,500 miles (20,000 kilometers) to and from southern South America every year. Throughout its lifetime, it may travel the equivalent of 4 or 5 times around the circumference of the earth."
+      },
+         {
+      "imageUrl": "https://www.dec.ny.gov/images/wildlife_images/fscerwph.jpg",
+      "name": "Cerulean Warbler",
+      "color": "blue",
+      "size": "4 inches",
+      "fact": "Interesting Facts female often uses spider web from the old nest to start construction on the new nest. cerurlean leaves the nest as \"bungee-jumping\" because she drops from the side of the nest, keeping her wings folded to her sides, and opens her wings to fly only when she is well below the nest."
+      },
+         {
+      "imageUrl": "https://www.allaboutbirds.org/guide/assets/photo/299890491-480px.jpg",
+      "name": "Common Tern",
+      "color": "gray",
+      "size": "13-16 inches in length with a wingspan of about 31 inches",
+      "fact": "They do not seek fresh water even when it is available nearby. Like many seabirds, they have nasal glands that excrete the excess salt."
+      },
+         {
+      "imageUrl": "https://media.vanityfair.com/photos/5b93e99e0bedc74c3148af93/master/w_2560%2Cc_limit/cardi-b-shoe.jpg",
+      "name": "Cardi B",
+      "color": "red",
+      "size": "5′ 3″",
+      "fact": "Can't dodge a shoe thrown by Nicki Minaj, but did trademark the word \"okurrr\"."
       }
     ]
   }
