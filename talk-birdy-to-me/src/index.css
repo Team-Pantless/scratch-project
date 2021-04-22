@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   font-family: Ubuntu;
 }
 
@@ -13,6 +13,7 @@
   height: 110%;
   background-image: linear-gradient(180deg, #ffd17a, #fff0f5);
   text-align: center;
+
   /* overflow: hidden; */
   font-family: Ubuntu;
 }
@@ -42,16 +43,24 @@
 button {
   display: flex;
   justify-content: center;
+  /* text-align: center; */
   margin: 1vh;
   background-color: transparent;
-  min-width: 100%;
+  min-width: 95%;
   min-height: 12vw;
-  max-width: 100%;
+  max-width: 110%;
   max-height: 12vh;
   border: none;
 }
 
+.spotted-button {
+  color: #cb410b;
+  font-weight: 600;
+}
+
 .img {
+  display: flex;
+  justify-content: center;
   max-height: 10vh;
 }
 
@@ -64,15 +73,23 @@ button {
 
 ul {
   list-style: none;
+  align-content: center;
 }
 
 img {
   max-width: 60vw;
+  align-items: center;
 }
 
-.birdImg {
-  text-align: center;
+footer {
+  font-size: x-small;
+  padding: 2%;
+  max-height: 8%;
 }
+
+/* .birdImg {
+  text-align: center;
+} */
 
 /* Mobile */
 @media screen and (max-width: 600px) {
