@@ -67,15 +67,15 @@ export default function Book(props) {
     // Renders the book element.
     // <div id="bookContainer">
     <div className="book">
-      <img src={props.result.coverurl} />
-      <h1>
+      <img className="bookImg"src={props.result.cover_url} />
+      <h3>
         {props.result.title} by {props.result.author}
-      </h1>
-      <h2>{props.result.page_count} pages</h2>
+      </h3>
+      <h4>{props.result.page_count} pages</h4>
       {/* If the status of the book is in progress, the below will render */}
       {props.result.status === "in progress" ? (
         <div>
-          <h2>On page {props.result.page_number}</h2>
+          <h4>On page {props.result.page_number}</h4>
           <button
             // class="complete-class"
             // id="button"

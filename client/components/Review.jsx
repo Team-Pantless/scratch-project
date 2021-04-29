@@ -3,7 +3,7 @@ import React from "react";
 // Display only component
 export default function Review(props) {
   return (
-    <div className="review">
+    <div id="bookContainer">
       <h1>
         {props.result.title} by {props.result.author}
       </h1>
