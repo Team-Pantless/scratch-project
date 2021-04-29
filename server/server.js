@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
 
 
 app.get("/signup", (req, res) => {
-  res.sendFile(path.join(__dirname, "../html-scss/index.html"));
+  res.redirect('http://localhost:8080/home');
 });
 
 //signup and login paths
@@ -67,10 +67,25 @@ app.get(
 app.get("/auth/google/callback", passport.authenticate('google', {successRedirect:'http://localhost:8080/home', failureRedirect: '/failed' }),
   function(req, res, next){
     res.redirect('http://localhost:8080/home');
-    next();
+    
   }
 );
 
+app.get('/auth/twitter', passport.authenticate('twitter', {scope: ['email', 'profile']}));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'http://localhost:8080/home', failureRedirect: '/auth/error' }),
+function(req, res) {
+ 
+  res.redirect('http://localhost:8080/home');
+});
+
+
+
+
+app.get('/auth/facebook',passport.authenticate('facebook',{ scope : ['email'] }));
+app.get('/auth/facebook/callback',passport.authenticate('facebook', {successRedirect:'http://localhost:8080/home', failureRedirect: '/auth/error' }),
+function(req, res) {
+  res.redirect('http://localhost:8080/home');
+});
 
 app.get("/home", (req, res) => {
   res.sendFile(path.join(__dirname, "../html-scss/index.html"));
@@ -80,20 +95,6 @@ app.get("/home", (req, res) => {
 app.use("/api/", apiRouter);
 
 app.use("/db/", libraryRouter);
-
-//signup and login paths
-// app.post(
-//   "/signup",
-//   userController.createUser,
-//   userController.addToSQL,
-//   (req, res) => {
-//     res.redirect("/home");
-//   }
-// );
-
-// app.post("/login", userController.verifyUser, (req, res) => {
-//   res.redirect("home");
-// });
 
 // catch all for requests to unknown route
 

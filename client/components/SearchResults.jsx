@@ -5,22 +5,23 @@ export default function SearchResults(props) {
     <div id="searchResult">
       <br />
       <img
-        src={props.result.imageLinks.smallThumbnail}
+        src={props.result.imageLinks.thumbnail}
         width="200px"
         height="269px"
       />
-      <h1>
+      <h2>
         {props.result.title} by {props.result.author}
-      </h1>
-      <h2>{props.result.pageCount}</h2>
+      </h2>
+      <h2>{`${props.result.pageCount} pages`}</h2>
 
       <button
+        id="addBookButton"
         onClick={() =>
           props.addToBeRead(
             props.result.title,
             props.result.authors[0],
             props.result.pageCount,
-            props.result.imageLinks.smallThumbnail,
+            props.result.imageLinks.thumbnail,
             props.result.industryIdentifiers[0].identifier
           )
         }

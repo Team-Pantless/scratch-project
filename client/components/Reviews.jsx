@@ -10,7 +10,7 @@ export default function Reviews() {
   // initial fetch from db for ratings/reviews
   useEffect(() => {
     axios.get("/db/reviews").then((data) => setReviews(data.data.rows));
-  });
+  }, []);
 
   // function that runs once ratings/reviews have populated
   const renderReviews = () => {
@@ -22,7 +22,8 @@ export default function Reviews() {
   };
   return (
     <div className="bodyDiv">
-      {reviews.length > 0 ? renderReviews() : <h2>Loading...</h2>}
+      <div className="bookContainer">{reviews.length > 0 ? renderReviews() : <h2>Loading...</h2>}
+      </div>
     </div>
   );
 }

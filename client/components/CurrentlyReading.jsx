@@ -13,7 +13,7 @@ export default function CurrentlyReading() {
     axios.get("/db/current").then((data) => {
       setBooks(data.data.rows);
     });
-  });
+  }, []);
 
   // function that runs once books have been succesfully fetched
   const renderBooks = () => {
@@ -51,7 +51,9 @@ export default function CurrentlyReading() {
   };
   return (
     <div className="bodyDiv">
-      {books.length > 0 ? renderBooks() : <h2>Loading...</h2>}
+      <div id="bookContainer">
+        {books.length > 0 ? renderBooks() : <h2>Loading...</h2>}
+      </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function ToBeRead() {
   // initial fetch request to pull books from db
   useEffect(() => {
     axios.get("/db/tbr").then((data) => setBooks(data.data.rows));
-  });
+  }, []);
 
   // function that runs once books have been succesfully fetched
   const renderBooks = () => {

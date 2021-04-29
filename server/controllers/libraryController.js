@@ -1,5 +1,7 @@
 const db = require("../models/libraryModel");
 
+const { twitteremail }= require('../passport.js')
+
 const libraryController = {};
 
 // ****************
@@ -11,18 +13,34 @@ const libraryController = {};
 
 // Takes in user id. Queries DB for that user and returns all books marked as "to be read"
 // Stores data in res.locals
+libraryController.getUserId = (req, res, next) => {
+  
+
+  const userEMAIL = []; 
+
+  if(twitteremail.email !== undefined ) userEMAIL.push(twitteremail.email)
+  else userEMAIL.push(req.user.emails[0].value)
+  
+ 
+
+  
+
+  db.query(`select user_id from accounts where email = $1`, userEMAIL).then(data =>{
+    res.locals.userID = data.rows[0].user_id})
+    .then(next)
+    .catch(e=>console.log(e))
+}
+
 libraryController.getToBeRead = (req, res, next) => {
   const querySelector = `
   SELECT book_list.book_id, book_list.user_id, book_list.status, books.title, books.author, books.page_count, books.cover_url, books.isbn 
   FROM "book_list" INNER JOIN "books" ON book_list.book_id = books._id 
   WHERE status = 'to be read' AND book_list.user_id = $1`;
-  const userID = ["1"]; // TO DO!!!!! needs updated to reflect real user id
-  const tbrResults = db.query(querySelector, userID);
-  tbrResults
+  const userID = [res.locals.userID]; // TO DO!!!!! needs updated to reflect real user id
+  db.query(querySelector, userID)  
     .then((data) => {
-      res.locals.toberead = data;
-      next();
-    })
+      res.locals.toberead = data;})
+    .then(next)
     .catch((err) => {
       return next({
         log:
@@ -42,8 +60,8 @@ libraryController.getCurrentlyReading = (req, res, next) => {
   SELECT book_list.book_id, book_list.status, book_list.user_id, books.title, books.author, books.page_count, books.cover_url, books.isbn, book_list.page_number 
   FROM "book_list" INNER JOIN "books" ON book_list.book_id = books._id 
   WHERE status = 'in progress' AND book_list.user_id = $1`;
-  const userID = ["1"]; // needs updated to reflect real user id
-
+  const userID = [res.locals.userID]; // needs updated to reflect real user id
+  
   const currentResults = db.query(querySelector, userID);
   currentResults
     .then((data) => {
@@ -65,13 +83,14 @@ libraryController.getCurrentlyReading = (req, res, next) => {
 // Takes in user id. Queries DB for that user and returns all books marked as "completed"
 // Stores data in res.locals
 libraryController.getCompleted = (req, res, next) => {
+  
   const querySelector = `
   SELECT book_list.book_id, book_list.status, books.title, books.author, books.page_count, books.cover_url, books.isbn 
   FROM "book_list" 
   INNER JOIN "books" 
   ON book_list.book_id = books._id 
   WHERE status = 'completed' AND book_list.user_id = $1`;
-  const userID = ["1"]; // needs updated to reflect real user id
+  const userID = [res.locals.userID]; // needs updated to reflect real user id
 
   const completedResults = db.query(querySelector, userID);
   completedResults
@@ -99,7 +118,7 @@ libraryController.getReviews = (req, res, next) => {
   INNER JOIN "books"
   ON review_list.book_id = books._id 
   WHERE review_list.user_id = $1`;
-  const userID = ["1"]; // needs updated to reflect real user id
+  const userID = [res.locals.userID]; // needs updated to reflect real user id
 
   const reviewResults = db.query(querySelector, userID);
   reviewResults
@@ -127,7 +146,7 @@ libraryController.updateStatus = (req, res, next) => {
   const querySelector = `UPDATE book_list
   SET status = 'in progress'
   WHERE book_id = $1 AND user_id = $2`;
-  const queryVars = [req.body.bookID, req.body.userID]; 
+  const queryVars = [req.body.bookID, res.locals.userID]; 
 
   const updateResults = db.query(querySelector, queryVars);
   updateResults.then(next()).catch((err) => {
@@ -158,7 +177,7 @@ libraryController.submitRating = (req, res, next) => {
   VALUES ($1, $2, $3, $4)`;
   const queryVarsInsert = [
     req.body.bookID,
-    req.body.userID,
+    res.locals.userID,
     req.body.stars,
     req.body.review,
   ];
@@ -166,7 +185,7 @@ libraryController.submitRating = (req, res, next) => {
   const querySelectorUpdate = `UPDATE book_list 
   SET status = 'completed'
   WHERE book_id = $1 AND user_id = $2`;
-  const queryVarsUpdate = [req.body.bookID, req.body.userID];
+  const queryVarsUpdate = [req.body.bookID, res.locals.userID];
 
   const updateRecords = db.query(querySelectorInsert, queryVarsInsert);
   updateRecords
@@ -209,7 +228,7 @@ libraryController.updatePageNum = (req, res, next) => {
   const querySelector = `UPDATE book_list
   SET page_number = $1
   WHERE book_id = $2 AND user_id = $3`;
-  const queryVars = [req.body.newPageNum, req.body.bookID, req.body.userID];
+  const queryVars = [req.body.newPageNum, req.body.bookID, res.locals.userID];
 
   const pageNumResults = db.query(querySelector, queryVars);
   pageNumResults.then(next()).catch((err) => {
@@ -235,20 +254,19 @@ libraryController.updatePageNum = (req, res, next) => {
 libraryController.removeBook = (req, res, next) => {
   const querySelector = `DELETE FROM book_list
   WHERE book_id = $1 and user_id = $2`;
-  const queryVars = [req.body.bookID, req.body.userID];
+  
+  const queryVars = [req.body.bookID, res.locals.userID];
 
   const removeResults = db.query(querySelector, queryVars);
-  removeResults.then(next());
+
 };
 
 // ***UNFINISHED! Need to link up with API Calls.***
 // Will also potentially need to create add book to DB ? idk
 libraryController.addToTBR = (req, res, next) => {
-  console.log(req.body);
   const querySelectorBookAdd = `
   INSERT INTO books (title, author, page_count, cover_url, isbn) 
-  VALUES ($1, $2, $3, $4, $5) 
-  RETURNING _id
+  VALUES ($1, $2, $3, $4, $5) ON CONFLICT (isbn) DO UPDATE SET isbn=EXCLUDED.isbn RETURNING (_id)
   `;
   const queryVars = [
     req.body.title,
@@ -259,28 +277,30 @@ libraryController.addToTBR = (req, res, next) => {
   ];
 
  // In query below, second array element needs updated to reflect true user ID 
-  const addedResults = db.query(querySelectorBookAdd, queryVars);
-  addedResults
+  const addedResults = db.query(querySelectorBookAdd, queryVars).then()
+
     .then((data) => {
-      console.log(data);
+      
+      console.log(data)
+      
       const addTBRqueryString = `
       INSERT INTO book_list (book_id, user_id, status, page_number) 
       VALUES ($1, $2, $3, $4)
       `;
       const TBRqueryVars = [
         data.rows[0]._id,
-        1,
+        res.locals.userID,
         'to be read',
         0
       ]
+      
+      
+
       db.query(addTBRqueryString, TBRqueryVars)
-        .then((data) => {
-          console.log(data);
-          next();
-        })
+        .then(next)
         .catch((err) => {
           return next({
-            log: "libraryController.addToTBR: ERROR:" + err.message,
+            log: "libraryController.addToTBR: ERROR:" + err,
             message: {
               err: 
                 "Error occurred in libraryController.addToTBR. Check server logs for more details"
@@ -290,7 +310,7 @@ libraryController.addToTBR = (req, res, next) => {
     })
     .catch((err) => {
       return next({
-        log: "libraryController.addToTBR: ERROR: Error adding to books",
+        log: err,
         message: {
           err:
             "Error occurred in libraryController.addToTBR. Check server logs for more details",

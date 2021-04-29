@@ -65,6 +65,7 @@ export default function Book(props) {
   };
   return (
     // Renders the book element.
+    // <div id="bookContainer">
     <div className="book">
       <img src={props.result.coverurl} />
       <h1>
@@ -75,7 +76,13 @@ export default function Book(props) {
       {props.result.status === "in progress" ? (
         <div>
           <h2>On page {props.result.page_number}</h2>
-          <button onClick={updateStatus}>Complete</button>{" "}
+          <button
+            // class="complete-class"
+            // id="button"
+            onClick={updateStatus}
+          >
+            Complete
+          </button>{" "}
           <button onClick={updatePageNum}>Update Page</button>{" "}
           <button
             onClick={() =>
@@ -112,5 +119,6 @@ export default function Book(props) {
         ""
       )}
     </div>
+    // </div>
   );
 }

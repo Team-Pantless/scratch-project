@@ -10,15 +10,6 @@ export default function Home() {
     <main id="homeContainer">
       <Header />
       <NavBar />
-      <div id="biggiantdiv">
-        {" "}
-        <img
-        id="wunderpus"
-          src="https://lh3.googleusercontent.com/proxy/nNyL1QLv-ea4PGVQmGIYUVccD47aL3TM3f26Aj8eV1bto73zJE5599zEiP-YnOov6Gg8QVMHWrLdI3gIFkf2q2cI61Mk1mKMvAMKAzn2mOTr7fF-VgjqwD9-uf6hD7OGrMP0X4dK"
-          height="150px"
-          width="250px"
-        />
-      </div>
     </main>
   );
 }
