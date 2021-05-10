@@ -1,0 +1,33 @@
+{
+	"name": "Theme-Dark-Dracula",
+	"displayName": "Dark-Dracula Theme",
+	"description": "Dark-Dracula Theme ported from the Dark-Dracula TextMate Theme",
+	"version": "0.0.5",
+	"publisher": "gerane",
+	"engines": {
+		"vscode": "^0.10.1"
+	},
+	"categories": [
+		"Themes"
+	],
+	"icon": "icon.png",
+	"homepage": "https://github.com/gerane/VSCodeThemes/blob/master/gerane.Theme-Dark-Dracula/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gerane/VSCodeThemes.git"
+	},
+	"contributes": {
+		"themes": [
+			{
+				"label": "Dark-Dracula",
+				"path": "./themes/Dark-Dracula.tmTheme",
+				"uiTheme": "vs-dark"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "4205a417-2cf8-47a9-bb25-80853cefcaa1",
+		"publisherId": "a5c25faf-bf60-4941-81b9-9a852b96c5fb",
+		"publisherDisplayName": "gerane"
+	}
+}

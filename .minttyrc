@@ -1,0 +1,11 @@
+ForegroundColour=121,177,247
+BackgroundColour=1,1,58
+CursorColour=89,139,221
+ThemeFile=
+Transparency=low
+CursorType=block
+CursorBlinks=no
+Font=JetBrains Mono
+FontHeight=10
+FontSmoothing=full
+ClicksPlaceCursor=yes
